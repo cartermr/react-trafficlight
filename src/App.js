@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
 
+import { useState } from 'react'
+import Lights from './components/Lights'
+
 function App() {
+  const [count, setCount] = useState(0)
+
+  const handleClick = () => {
+    if (count === 3) {
+      setCount(1)
+    } else {
+      setCount(count + 1)
+    }
+  }
+
+  const randomClick = () => {
+    let num = Math.floor(Math.random() * (4 - 1) + 1)
+    if (num == count) {
+      num = Math.floor(Math.random() * (4 - 1) + 1)
+    }
+    console.log(num)
+    setCount(num)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <div className='light-body'>
+        <Lights count={count} />
+      </div>
+      <button onClick={handleClick}>Standard</button>
+      <button onClick={randomClick}>Random</button>
     </div>
   );
 }
