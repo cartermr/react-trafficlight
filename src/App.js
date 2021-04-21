@@ -16,7 +16,7 @@ function App() {
 
   const randomClick = () => {
     let num = Math.floor(Math.random() * (4 - 1) + 1)
-    if (num == count) {
+    if (num === count) {
       num = Math.floor(Math.random() * (4 - 1) + 1)
     }
     console.log(num)
